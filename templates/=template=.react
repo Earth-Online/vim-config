@@ -1,0 +1,9 @@
+import React from 'react';
+
+class %CLASS% extends React.Component {
+   render(){
+    
+   }
+}
+
+export default %CLASS%
