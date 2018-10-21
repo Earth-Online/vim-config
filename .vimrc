@@ -60,6 +60,9 @@ Plugin 'mattn/emmet-vim'
 Plugin 'aperezdc/vim-template'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'rust-lang/rust.vim'
+Plugin 'scrooloose/syntastic'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -92,3 +95,13 @@ let mapleader = ","
 let g:templates_directory = ["~/.templates/"]
 let g:templates_name_prefix = "t."
 let g:templates_no_builtin_templates = 1
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
