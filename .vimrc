@@ -4,6 +4,7 @@ set shell=/bin/bash
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -26,12 +27,21 @@ Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'tpope/vim-surround'
 Plugin 'ap/vim-buftabline'
 Plugin 'tpope/vim-fugitive'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'docker/docker'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'fatih/vim-go'
+Plugin 'elzr/vim-json'
+Plugin 'kshenoy/vim-signature'
+Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Enable folding
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevel=99
 
 " python
@@ -54,7 +64,7 @@ let mapleader = ","
 
 " user plugin config
 " vim-templete
-let g:templates_directory = ["~/.templates/"]
+let g:templates_directory = ["~/.vim/templates/"]
 let g:templates_name_prefix = "t."
 let g:templates_no_builtin_templates = 1
 
@@ -74,6 +84,22 @@ if !has('gui_running')
     set t_Co=256
 endif
 
+" ultisnip
+let g:UltiSnipsExpandTrigger="<c-u>"
+
+" nerdtree
+" 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
+nmap <Leader>fl :NERDTreeToggle<CR>
+" 设置NERDTree子窗口宽度
+let NERDTreeWinSize=32
+" 设置NERDTree子窗口位置
+let NERDTreeWinPos="right"
+" 显示隐藏文件
+let NERDTreeShowHidden=1
+" NERDTree 子窗口中不显示冗余帮助信息
+let NERDTreeMinimalUI=1
+" 删除文件时自动删除文件对应 buffer
+let NERDTreeAutoDeleteBuffer=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Normal Set
@@ -152,9 +178,10 @@ set wrap "Wrap lines
 
 " Enable syntax highlighting
 syntax enable 
+syntax on
 
 try
-    colorscheme desert
+    set background=dark
 catch
 endtry
 
@@ -164,3 +191,27 @@ set report      =0         " Always report changed lines.
 set synmaxcol   =200       " Only highlight the first 200 columns.
 set ttyfast                " Faster redrawing.
 set lazyredraw             " Only redraw when necessary
+
+" ex mode commands made easy 用于快速进入命令行
+nnoremap ; :
+
+" set paste
+set pastetoggle=<leader>p
+
+" ctags
+set tags=tags
+
+" 设置 tagbar 子窗口的位置出现在主编辑区的左边 
+let tagbar_left=1 
+
+" 设置标签子窗口的宽度 
+let tagbar_width=32 
+
+" tagbar 子窗口中不显示冗余帮助信息 
+let g:tagbar_compact=1
+
+" set tagbar map
+nnoremap <Leader>ilt :TagbarToggle<CR> 
+nnoremap <Leader>ct  :TagbarClose<CR>
+
+filetype on
