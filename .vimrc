@@ -23,7 +23,6 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'mileszs/ack.vim'
 Plugin 'itchyny/lightline.vim'
-Plugin 'Vimjas/vim-python-pep8-indent'
 Plugin 'tpope/vim-surround'
 Plugin 'ap/vim-buftabline'
 Plugin 'tpope/vim-fugitive'
@@ -36,6 +35,25 @@ Plugin 'elzr/vim-json'
 Plugin 'kshenoy/vim-signature'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
+Plugin 'yuratomo/w3m.vim'
+Plugin 'racer-rust/vim-racer'
+
+Plugin 'mattn/webapi-vim'
+Plugin 'thaerkh/vim-workspace'
+Plugin 'mattn/gist-vim'
+Plugin 'shougo/vimproc.vim'
+Plugin 'tmhedberg/simpylfold'
+
+" shell
+Plugin 'shougo/vimshell.vim'
+
+" python
+" Plugin 'Vimjas/vim-python-pep8-indent'
+" Plugin 'vim-scripts/indentpython.vim'
+Plugin 'python-mode/python-mode'
+
+" paste
+Plugin 'roxma/vim-paste-easy'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -73,10 +91,13 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_error_symbol='>>'
+let g:syntastic_warning_symbol='>'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers=['pylint']
 
 " Highlight 
 set laststatus=2
@@ -85,8 +106,10 @@ if !has('gui_running')
 endif
 
 " ultisnip
-let g:UltiSnipsExpandTrigger="<c-u>"
+let g:UltiSnipsExpandTrigger="<c-s>"
 
+" workspace
+nnoremap <leader>s :ToggleWorkspace<CR>
 " nerdtree
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
 nmap <Leader>fl :NERDTreeToggle<CR>
@@ -215,3 +238,5 @@ nnoremap <Leader>ilt :TagbarToggle<CR>
 nnoremap <Leader>ct  :TagbarClose<CR>
 
 filetype on
+
+set autowrite
