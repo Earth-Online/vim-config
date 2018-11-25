@@ -15,34 +15,76 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Bundle 'Valloric/YouCompleteMe'
 " user plugin
-Plugin 'mattn/emmet-vim'
+
+" templat
 Plugin 'aperezdc/vim-template'
+
+" code
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'rust-lang/rust.vim'
-Plugin 'scrooloose/syntastic'
+
+" find
 Plugin 'mileszs/ack.vim'
-Plugin 'itchyny/lightline.vim'
-Plugin 'tpope/vim-surround'
+
+" tag
+Plugin 'majutsushi/tagbar'
+Plugin 'godlygeek/tabular'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+
+" comment
+Plugin 'tpope/vim-commentary'
+
+" paste
+Plugin 'roxma/vim-paste-easy'
+
+" debug
+Plugin 'jaredly/vim-debug'
+
+" test
+Plugin 'janko-m/vim-test'
+
+" ui 
+Plugin 'vim-airline/vim-airline'
+" Plugin 'itchyny/lightline.vim'
 Plugin 'ap/vim-buftabline'
-Plugin 'tpope/vim-fugitive'
+
+" mark
+Plugin 'kshenoy/vim-signature'
+
+" check
+Plugin 'scrooloose/syntastic'
+
+" docker
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'docker/docker'
-Plugin 'godlygeek/tabular'
+
+" git
+Plugin 'tpope/vim-fugitive'
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
+
+" makrdown
 Plugin 'plasticboy/vim-markdown'
+
+" html
+Plugin 'mattn/emmet-vim'
+
+" golang
 Plugin 'fatih/vim-go'
+" Plugin 'autozimu/LanguageClient-neovim'
+Plugin 'tpope/vim-surround'
 Plugin 'elzr/vim-json'
-Plugin 'kshenoy/vim-signature'
-Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'yuratomo/w3m.vim'
-Plugin 'racer-rust/vim-racer'
 
-Plugin 'mattn/webapi-vim'
 Plugin 'thaerkh/vim-workspace'
-Plugin 'mattn/gist-vim'
 Plugin 'shougo/vimproc.vim'
 Plugin 'tmhedberg/simpylfold'
+
+" rust
+Plugin 'racer-rust/vim-racer'
+Plugin 'rust-lang/rust.vim'
 
 " shell
 Plugin 'shougo/vimshell.vim'
@@ -51,9 +93,8 @@ Plugin 'shougo/vimshell.vim'
 " Plugin 'Vimjas/vim-python-pep8-indent'
 " Plugin 'vim-scripts/indentpython.vim'
 Plugin 'python-mode/python-mode'
+Plugin 'plytophogy/vim-virtualenv'
 
-" paste
-Plugin 'roxma/vim-paste-easy'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -81,6 +122,23 @@ let mapleader = ","
 
 
 " user plugin config
+" python-mode
+let g:pymode_trim_whitespaces = 1
+let g:pymode_lint_checkers = ['pylint']
+" let g:pymode_python = 'python3'
+let g:pymode_indent = 1
+let g:pymode_folding = 1
+let g:pymode_motion = 1
+let g:pymode_rope = 1
+let g:pymode_trim_whitespaces = 0
+
+" LanguageClient
+set hidden
+let g:LanguageClient_serverCommands = {
+   \ 'python':['pyls'],
+ \ }
+noremap <F5> :call LanguageClient_contextMenu()<CR>
+
 " vim-templete
 let g:templates_directory = ["~/.vim/templates/"]
 let g:templates_name_prefix = "t."
@@ -231,11 +289,11 @@ let tagbar_left=1
 let tagbar_width=32 
 
 " tagbar 子窗口中不显示冗余帮助信息 
+nnoremap <Leader>ct  :TagbarClose<CR>
 let g:tagbar_compact=1
 
 " set tagbar map
-nnoremap <Leader>ilt :TagbarToggle<CR> 
-nnoremap <Leader>ct  :TagbarClose<CR>
+nnoremap <Leader>to :TagbarToggle<CR> 
 
 filetype on
 
