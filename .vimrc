@@ -55,6 +55,9 @@ Plugin 'kshenoy/vim-signature'
 " check
 Plugin 'scrooloose/syntastic'
 
+" file
+Plugin 'scrooloose/nerdtree'
+
 " docker
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'docker/docker'
@@ -72,11 +75,12 @@ Plugin 'mattn/emmet-vim'
 
 " golang
 Plugin 'fatih/vim-go'
-" Plugin 'autozimu/LanguageClient-neovim'
-Plugin 'tpope/vim-surround'
+
+" json
 Plugin 'elzr/vim-json'
-Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
 Plugin 'yuratomo/w3m.vim'
+Plugin 'sheerun/vim-polyglot'
 
 Plugin 'thaerkh/vim-workspace'
 Plugin 'shougo/vimproc.vim'
@@ -85,15 +89,17 @@ Plugin 'tmhedberg/simpylfold'
 " rust
 Plugin 'racer-rust/vim-racer'
 Plugin 'rust-lang/rust.vim'
+Plugin 'timonv/vim-cargo'
+
 
 " shell
 Plugin 'shougo/vimshell.vim'
 
 " python
-" Plugin 'Vimjas/vim-python-pep8-indent'
-" Plugin 'vim-scripts/indentpython.vim'
+Plugin 'heavenshell/vim-pydocstring'
 Plugin 'python-mode/python-mode'
 Plugin 'plytophogy/vim-virtualenv'
+Plugin 'ivanov/vim-ipython'
 
 
 call vundle#end()            " required
@@ -115,7 +121,11 @@ au BufNewFile,BufRead *.py
 
 
 " youcomplete 
-let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
+
+
 
 "Set mapleader
 let mapleader = ","
