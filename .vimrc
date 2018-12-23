@@ -25,6 +25,7 @@ Plugin 'honza/vim-snippets'
 
 " find
 Plugin 'mileszs/ack.vim'
+Plugin 'easymotion/vim-easymotion'
 
 " tag
 Plugin 'majutsushi/tagbar'
@@ -100,6 +101,9 @@ Plugin 'heavenshell/vim-pydocstring'
 Plugin 'python-mode/python-mode'
 Plugin 'plytophogy/vim-virtualenv'
 Plugin 'ivanov/vim-ipython'
+
+" type
+Plugin 'Raimondi/delimitMate'
 
 
 call vundle#end()            " required
