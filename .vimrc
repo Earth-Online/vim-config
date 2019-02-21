@@ -16,7 +16,7 @@ Plugin 'VundleVim/Vundle.vim'
 Bundle 'Valloric/YouCompleteMe'
 " user plugin
 
-" templat
+" template
 Plugin 'aperezdc/vim-template'
 
 " code
@@ -40,14 +40,14 @@ Plugin 'tpope/vim-commentary'
 Plugin 'roxma/vim-paste-easy'
 
 " debug
-Plugin 'jaredly/vim-debug'
+Plugin 'joonty/vdebug'
+" Plugin 'jaredly/vim-debug'
 
 " test
 Plugin 'janko-m/vim-test'
 
 " ui 
 Plugin 'vim-airline/vim-airline'
-" Plugin 'itchyny/lightline.vim'
 Plugin 'ap/vim-buftabline'
 
 " mark
@@ -73,18 +73,19 @@ Plugin 'plasticboy/vim-markdown'
 
 " html
 Plugin 'mattn/emmet-vim'
+Plugin 'tpope/vim-surround'
 
 " golang
 Plugin 'fatih/vim-go'
 
 " json
 Plugin 'elzr/vim-json'
-Plugin 'tpope/vim-surround'
+
 Plugin 'yuratomo/w3m.vim'
 Plugin 'sheerun/vim-polyglot'
-
-Plugin 'thaerkh/vim-workspace'
 Plugin 'shougo/vimproc.vim'
+
+" fold
 Plugin 'tmhedberg/simpylfold'
 
 " rust
@@ -108,6 +109,9 @@ Plugin 'Raimondi/delimitMate'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" auto vimrc
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " Enable folding
 set foldmethod=syntax
@@ -144,7 +148,7 @@ let g:pymode_indent = 1
 let g:pymode_folding = 1
 let g:pymode_motion = 1
 let g:pymode_rope = 1
-let g:pymode_trim_whitespaces = 0
+let g:pymode_trim_whitespaces = 1
 
 " LanguageClient
 set hidden
@@ -180,8 +184,6 @@ endif
 " ultisnip
 let g:UltiSnipsExpandTrigger="<c-s>"
 
-" workspace
-nnoremap <leader>s :ToggleWorkspace<CR>
 " nerdtree
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
 nmap <Leader>fl :NERDTreeToggle<CR>
@@ -289,6 +291,8 @@ set lazyredraw             " Only redraw when necessary
 
 " ex mode commands made easy 用于快速进入命令行
 nnoremap ; :
+" fast esc
+inoremap ;; <Esc>
 
 " set paste
 set pastetoggle=<leader>p
