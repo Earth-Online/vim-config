@@ -13,7 +13,13 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Bundle 'Valloric/YouCompleteMe'
+
+" code complete
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'davidhalter/jedi-vim'
+Plugin 'shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
 " user plugin
 
 " template
@@ -40,7 +46,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'roxma/vim-paste-easy'
 
 " debug
-Plugin 'joonty/vdebug'
+" Plugin 'joonty/vdebug'
 " Plugin 'jaredly/vim-debug'
 
 " test
@@ -58,6 +64,7 @@ Plugin 'scrooloose/syntastic'
 
 " file
 Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " docker
 Plugin 'ekalinin/Dockerfile.vim'
@@ -75,13 +82,18 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround'
 
+" javascipt
+Plugin 'pangloss/vim-javascript'
+
 " golang
 Plugin 'fatih/vim-go'
 
 " json
 Plugin 'elzr/vim-json'
 
+" brower
 Plugin 'yuratomo/w3m.vim'
+
 Plugin 'sheerun/vim-polyglot'
 Plugin 'shougo/vimproc.vim'
 
@@ -140,6 +152,10 @@ let mapleader = ","
 
 
 " user plugin config
+" deoplete
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
 " python-mode
 let g:pymode_trim_whitespaces = 1
 let g:pymode_lint_checkers = ['pylint']
@@ -183,6 +199,9 @@ endif
 
 " ultisnip
 let g:UltiSnipsExpandTrigger="<c-s>"
+
+" ctrlp
+nmap <Leader>p :CtrlP<CR>
 
 " nerdtree
 " 使用 NERDTree 插件查看工程文件。设置快捷键，速记：file list
