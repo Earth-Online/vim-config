@@ -5,125 +5,135 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
 
 " code complete
-" Plugin 'Valloric/YouCompleteMe'
-" Plugin 'davidhalter/jedi-vim'
-Plugin 'shougo/deoplete.nvim'
-Plugin 'roxma/nvim-yarp'
-Plugin 'roxma/vim-hug-neovim-rpc'
-" user plugin
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'davidhalter/jedi-vim'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 
 " template
-Plugin 'aperezdc/vim-template'
+Plug 'aperezdc/vim-template'
 
 " code
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " find
-Plugin 'mileszs/ack.vim'
-Plugin 'easymotion/vim-easymotion'
+Plug 'mileszs/ack.vim'
+Plug 'easymotion/vim-easymotion'
 
 " tag
-Plugin 'majutsushi/tagbar'
-Plugin 'godlygeek/tabular'
-Plugin 'xolox/vim-easytags'
-Plugin 'xolox/vim-misc'
+Plug 'majutsushi/tagbar'
+Plug 'godlygeek/tabular'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
 
 " comment
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 
 " paste
-Plugin 'roxma/vim-paste-easy'
+Plug 'roxma/vim-paste-easy'
 
 " debug
-" Plugin 'joonty/vdebug'
-" Plugin 'jaredly/vim-debug'
+" Plug 'joonty/vdebug'
+" Plug 'jaredly/vim-debug'
 
 " test
-Plugin 'janko-m/vim-test'
+Plug 'janko-m/vim-test'
 
 " ui 
-Plugin 'vim-airline/vim-airline'
-Plugin 'ap/vim-buftabline'
+Plug 'vim-airline/vim-airline'
+Plug 'ap/vim-buftabline'
 
 " mark
-Plugin 'kshenoy/vim-signature'
+Plug 'kshenoy/vim-signature'
 
 " check
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
 " file
-Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " docker
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'docker/docker'
+Plug 'ekalinin/Dockerfile.vim'
+" Plug 'docker/docker'
 
 " git
-Plugin 'tpope/vim-fugitive'
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim'
 
 " makrdown
-Plugin 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'
+
+" php
+Plug 'phpactor/phpactor'
+Plug 'kristijanhusak/deoplete-phpactor'
 
 " html
-Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-surround'
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-surround'
 
 " javascipt
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 
 " golang
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
+" go get -u github.com/stamblerre/gocode
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 
 " json
-Plugin 'elzr/vim-json'
+Plug 'elzr/vim-json'
 
 " brower
-Plugin 'yuratomo/w3m.vim'
+" Plug 'yuratomo/w3m.vim'
 
-Plugin 'sheerun/vim-polyglot'
-Plugin 'shougo/vimproc.vim'
+Plug 'sheerun/vim-polyglot'
 
 " fold
-Plugin 'tmhedberg/simpylfold'
+Plug 'tmhedberg/simpylfold'
 
 " rust
-Plugin 'racer-rust/vim-racer'
-Plugin 'rust-lang/rust.vim'
-Plugin 'timonv/vim-cargo'
+Plug 'racer-rust/vim-racer'
+Plug 'rust-lang/rust.vim'
+Plug 'timonv/vim-cargo'
 
 
 " shell
-Plugin 'shougo/vimshell.vim'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'shougo/vimshell.vim'
 
 " python
-Plugin 'heavenshell/vim-pydocstring'
-Plugin 'python-mode/python-mode'
-Plugin 'plytophogy/vim-virtualenv'
-Plugin 'ivanov/vim-ipython'
+Plug 'heavenshell/vim-pydocstring'
+Plug 'python-mode/python-mode'
+Plug 'plytophogy/vim-virtualenv'
+Plug 'ivanov/vim-ipython'
+Plug 'deoplete-plugins/deoplete-jedi'
 
 " type
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 
 
-call vundle#end()            " required
+call plug#end()            " required
 filetype plugin indent on    " required
 
 " auto vimrc
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
+"Set mapleader
+let mapleader = ","
+
+" noremap <c-w> :w<CR>
 
 " Enable folding
 set foldmethod=syntax
@@ -142,13 +152,11 @@ au BufNewFile,BufRead *.py
 
 " youcomplete 
 " let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
-let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
+" let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+" let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
 
 
 
-"Set mapleader
-let mapleader = ","
 
 
 " user plugin config
@@ -200,6 +208,8 @@ endif
 " ultisnip
 let g:UltiSnipsExpandTrigger="<c-s>"
 
+" phpactor
+" let g:phpactorPhpBin="/opt/php/bin/php"
 " ctrlp
 nmap <Leader>p :CtrlP<CR>
 
