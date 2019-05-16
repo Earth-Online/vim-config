@@ -23,6 +23,9 @@ let g:deoplete#enable_at_startup = 1
 " template
 Plug 'aperezdc/vim-template'
 
+" write
+Plug 'junegunn/goyo.vim'
+
 " code
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -53,6 +56,10 @@ Plug 'janko-m/vim-test'
 " ui 
 Plug 'vim-airline/vim-airline'
 Plug 'ap/vim-buftabline'
+Plug 'ryanoasis/vim-devicons'
+
+" align
+Plug 'junegunn/vim-easy-align'
 
 " mark
 Plug 'kshenoy/vim-signature'
@@ -63,6 +70,10 @@ Plug 'scrooloose/syntastic'
 " file
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
+
+" bazel
+Plug 'google/vim-maktaba'
+Plug 'bazelbuild/vim-bazel'
 
 " docker
 Plug 'ekalinin/Dockerfile.vim'
@@ -75,6 +86,10 @@ Plug 'mattn/webapi-vim'
 
 " makrdown
 Plug 'plasticboy/vim-markdown'
+
+" xml
+Plug 'othree/xml.vim'
+
 
 " php
 Plug 'phpactor/phpactor'
@@ -112,6 +127,7 @@ Plug 'timonv/vim-cargo'
 " shell
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'shougo/vimshell.vim'
+Plug 'metakirby5/codi.vim'
 
 " python
 Plug 'heavenshell/vim-pydocstring'
@@ -154,8 +170,6 @@ au BufNewFile,BufRead *.py
 " let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
 " let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 " let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
-
-
 
 
 
@@ -301,6 +315,7 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+set number
 
 " Enable syntax highlighting
 syntax enable 
@@ -341,6 +356,8 @@ let g:tagbar_compact=1
 
 " set tagbar map
 nnoremap <Leader>to :TagbarToggle<CR> 
+
+let g:syntastic_c_config_file = '.syntastic_c_config'
 
 filetype on
 
