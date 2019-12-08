@@ -92,7 +92,7 @@ Plug 'othree/xml.vim'
 
 
 " php
-Plug 'phpactor/phpactor'
+Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
 Plug 'kristijanhusak/deoplete-phpactor'
 
 " html
@@ -104,6 +104,9 @@ Plug 'pangloss/vim-javascript'
 
 " golang
 Plug 'fatih/vim-go'
+Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+" go 中的代码追踪，输入 gd 就可以自动跳转
+Plug 'dgryski/vim-godef'
 " go get -u github.com/stamblerre/gocode
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 
@@ -143,37 +146,24 @@ Plug 'Raimondi/delimitMate'
 call plug#end()            " required
 filetype plugin indent on    " required
 
-" auto vimrc
-autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
 
 "Set mapleader
 let mapleader = ","
 
-" noremap <c-w> :w<CR>
-
-" Enable folding
-set foldmethod=syntax
-set foldlevel=99
-
-" python
-au BufNewFile,BufRead *.py
-            \set tabstop=4
-            \set softtabstop=4
-            \set shiftwidth=4
-            \set textwidth=79
-            \set expandtab
-            \set autoindent
-            \set fileformat=unix
-
-
-" youcomplete 
-" let g:ycm_global_ycm_extra_conf='~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
-" let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
-" let g:ycm_path_to_python_interpreter='/usr/bin/python2.7'
-
-
-
 " user plugin config
+" vim-go
+let g:go_fmt_command = "goimports"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_generate_tags = 1
+let g:go_autodetect_gopath = 1
+let g:go_auto_type_info = 1
 " deoplete
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -244,6 +234,31 @@ let NERDTreeAutoDeleteBuffer=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Normal Set
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" auto vimrc
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+autocmd BufWritePost $HOME/.vim/.vimrc source $MYVIMRC
+
+
+" noremap <c-w> :w<CR>
+
+" Enable folding
+set foldmethod=syntax
+set foldlevel=99
+
+" python
+au BufNewFile,BufRead *.py
+            \set tabstop=4
+            \set softtabstop=4
+            \set shiftwidth=4
+            \set textwidth=79
+            \set expandtab
+            \set autoindent
+            \set fileformat=unix
+
+" 退出插入模式指定类型的文件自动保存
+au InsertLeave *.go,*.sh,*.php,*.py write
+
+
 " filetype
 filetype plugin on
 filetype indent on
@@ -340,6 +355,14 @@ inoremap ;; <Esc>
 
 " set paste
 set pastetoggle=<leader>p
+
+" ==== 系统剪切板复制粘贴 ====
+" v 模式下复制内容到系统剪切板
+vmap <Leader>c "+yy
+" n 模式下复制一行到系统剪切板
+nmap <Leader>c "+yy
+" n 模式下粘贴系统剪切板的内容
+nmap <Leader>v "+p
 
 " ctags
 set tags=tags
